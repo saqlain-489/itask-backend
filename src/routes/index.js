@@ -7,7 +7,7 @@ const authuserRoutes = require('./user.auth.route')
 
 
 router.use('/api/users', userRoutes);
-router.use('/api', authuserRoutes);
+// router.use('/api', authuserRoutes);
 router.use('/api/todos', todoRoutes);
 router.use('/api/auth', authuserRoutes);
 

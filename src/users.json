@@ -1,0 +1,143 @@
+[
+  {
+    "id": "1",
+    "name": "cerulean",
+    "year": 2000,
+    "color": "#98B2D1",
+    "pantone_value": "15-4020"
+  },
+  {
+    "id": "2",
+    "name": "fuchsia rose",
+    "year": 2001,
+    "color": "#C74375",
+    "pantone_value": "17-2031"
+  },
+  {
+    "id": "4",
+    "name": "aqua sky",
+    "year": 2003,
+    "color": "#7BC4C4",
+    "pantone_value": "14-4811"
+  },
+  {
+    "id": "5",
+    "name": "tigerlily",
+    "year": 2004,
+    "color": "#E2583E",
+    "pantone_value": "17-1456"
+  },
+  {
+    "id": "9",
+    "email": "tobias.funke@reqres.in",
+    "first_name": "Tobias",
+    "last_name": "Funke",
+    "avatar": "https://reqres.in/img/faces/9-image.jpg"
+  },
+  {
+    "id": "10",
+    "email": "byron.fields@reqres.in",
+    "first_name": "Byron",
+    "last_name": "Fields",
+    "avatar": "https://reqres.in/img/faces/10-image.jpg"
+  },
+  {
+    "id": "11",
+    "email": "george.edwards@reqres.in",
+    "first_name": "George",
+    "last_name": "Edwards",
+    "avatar": "https://reqres.in/img/faces/11-image.jpg"
+  },
+  {
+    "id": "12",
+    "email": "rachel.howell@reqres.in",
+    "first_name": "Rachel",
+    "last_name": "Howell",
+    "avatar": "https://reqres.in/img/faces/12-image.jpg"
+  },
+  {
+    "id": "a1a4e9c5-3fb0-468b-ae74-049040cff28c",
+    "first_name": "sdasdasd",
+    "last_name": "asdasd"
+  },
+  {
+    "id": "59c4962a-255a-499c-9812-0d433d201768",
+    "first_name": "gfhtrth",
+    "last_name": "dasdsa"
+  },
+  {
+    "id": "abe0c9cf-0046-4a20-9c73-57fbc80276ae",
+    "first_name": "scc",
+    "last_name": "s"
+  },
+  {
+    "id": "d2780da6-e4cc-4e9d-9dd5-de37bd8e2cbb",
+    "first_name": "sada",
+    "last_name": "sdsad",
+    "createdAt": 1761736429393
+  },
+  {
+    "id": "184304e2-715a-4327-9db5-2de7e807b893",
+    "first_name": "dadasd",
+    "last_name": "asdasddnaskjdjsaas",
+    "updatedAt": "2025-10-30T08:11:28.662Z"
+  },
+  {
+    "id": "559f24ef-58b8-4032-86e1-50fe68234b88",
+    "first_name": "csaca",
+    "last_name": "scasc"
+  },
+  {
+    "id": "5182e64a-95c0-44e9-827a-1d1129a9a53f",
+    "first_name": "fwefwe",
+    "last_name": "ewf",
+    "createdAt": "Wed Oct 29 2025"
+  },
+  {
+    "id": "f96a25d1-5a9b-4309-aa74-e427641a2c78",
+    "first_name": "csac",
+    "last_name": "asf",
+    "createdAt": "2025-10-29T11:16:03.542Z"
+  },
+  {
+    "id": "e7d53d0e-f706-4ac6-bced-e8e71d9672d0",
+    "first_name": "hih",
+    "last_name": "iggh",
+    "createdAt": "2025-10-29T11:24:09.975Z"
+  },
+  {
+    "id": "e97e046e-3ad4-48cd-a2b0-beeb313bb50c",
+    "first_name": "sada",
+    "last_name": "sadasd",
+    "createdAt": "2025-10-30T06:31:26.384Z"
+  },
+  {
+    "id": "c7ee7c42-a91c-4561-87b7-cee309714668",
+    "first_name": "csasdasdasdas",
+    "last_name": "asfsdasdasda",
+    "createdAt": "2025-10-30T06:35:03.225Z"
+  },
+  {
+    "id": "d7e6ebd2-27bd-4868-8404-c80d37310c1f",
+    "first_name": "Ali",
+    "createdAt": "2025-10-30T06:39:15.194Z"
+  },
+  {
+    "id": "71eea221-0cca-44ea-8b34-7dff9024d340",
+    "first_name": "djkjasd",
+    "last_name": "ksajhdsa",
+    "createdAt": "2025-10-30T06:50:41.787Z"
+  },
+  {
+    "id": "9744a866-0060-4f55-9649-408e2215e230",
+    "first_name": "asdkhskadhaksd ",
+    "last_name": "asdasdas",
+    "createdAt": "2025-10-30T07:19:22.593Z"
+  },
+  {
+    "id": "3563acf2-c69f-4450-981a-9bec2f08fd63",
+    "first_name": "asdkhskadhaksd ",
+    "last_name": "asdasdasdfsdfsdfs",
+    "createdAt": "2025-10-30T11:56:48.090Z"
+  }
+]

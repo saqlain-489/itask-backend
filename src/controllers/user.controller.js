@@ -32,7 +32,7 @@ const deleteUser = async (req, res) => {
 }
 const patchUser = async (req, res) => {
   try {
-    const id = req.user.id
+    const id = req.params.id
     const edited = await userServices.patchUser(id, req.body);
     if (!edited) return res.status(404).json({ message: 'User not found' })
     res.json(edited)
@@ -55,7 +55,7 @@ const getCurrentUser = async (req, res) => {
 
 const updateCurrentUser = async (req, res) => {
   try {
-    const userId = req.user.id; // from JWT token
+    const userId = req.user.id; 
     const edited = await userServices.patchUser(userId, req.body);
     if (!edited) return res.status(404).json({ message: 'User not found' });
     res.json(edited);

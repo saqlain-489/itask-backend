@@ -36,6 +36,7 @@ async function deleteUser(id) {
 async function patchUser(id, updates) {
   updates.updatedAt = new Date();
   const updatedUser = await User.findByIdAndUpdate(id, updates, { new: true });
+  console.log(updatedUser);
   return updatedUser;
 }
 async function getUserById(id) {

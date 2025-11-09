@@ -14,4 +14,5 @@ router.route('/:id')
 .delete(authMiddleware, todoController.deletetodo)
 .patch(authMiddleware, todoController.patchTodo);
 
+router.route('/search' ).get(authMiddleware, todoController.searchtodo)
 module.exports = router;

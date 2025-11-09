@@ -2,7 +2,8 @@
 const authUserServices = require('../services/user.auth.service')
 const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
-
+const secretKey = 'sklajdlaks'
+const jwt = require("jsonwebtoken");
 const User = require('../models/Users.model')
 const { sendEmail } = require('../utils/email');
 
@@ -11,12 +12,12 @@ const registerUser = async (req, res) => {
     console.log('Received request body:', req.body);
     const { name, email, password } = req.body;
 
-    const { newUser, token } = await authUserServices.registerUser(req.body);
-
+    const { newUser, accesstoken, refreshToken } = await authUserServices.registerUser(req.body);
     res.status(201).json({
       message: "User registered successfully",
-      data: { name, email }
-      , token
+      newUser,
+      accesstoken,
+      refreshToken
     });
   } catch (err) {
     console.error('Error in registerUser:', err);
@@ -28,26 +29,69 @@ const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const { user, token } = await authUserServices.loginUser(req.body);
+    const { user, accesstoken, refreshToken } = await authUserServices.loginUser(req.body);
+
+    if (user && refreshToken) {
+      await User.findByIdAndUpdate(user._id, { refreshToken: refreshToken }, { new: true, useFindAndModify: false });
+    }
+    console.log(user.refreshToken)
 
     res.status(200).json({
       message: "Login successful",
       user: {
+        role: user.role,
         id: user._id,
         name: user.name,
         email: user.email,
         light: user.light,
         view: user.view,
         isAdmin: user.isAdmin,
+        refreshToken: user.refreshToken,
+        // accesstoken:user.accesstoken
       },
-      token,
+      accesstoken,
+      refreshToken,
     });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 };
 
+async function refreshAccessToken(req, res) {
+  try {
+    const { refreshToken } = req.body;
+    if (!refreshToken) {
+      return res.status(401).json({ message: "Refresh token required" });
+    }
 
+
+    const decoded = jwt.verify(refreshToken, secretKey);
+    console.log(decoded)
+
+    const user = await User.findById(decoded.id);
+    console.log(user)
+    if (!user) {
+      return res.status(401).json({ message: "User not found" });
+    }
+
+
+    if (user.refreshToken !== refreshToken) {
+      return res.status(401).json({ message: "Invalid brefresh token" });
+    }
+
+
+    const newAccessToken = jwt.sign(
+      { id: user._id, email: user.email, role: user.role },
+      secretKey,
+      { expiresIn: "15m" }
+    );
+
+    res.json({ accessToken: newAccessToken });
+  } catch (err) {
+    console.error("Refresh error:", err.message);
+    res.status(401).json({ message: "Invalid or expidfred refresh token" });
+  }
+}
 
 
 async function forgotPassword(req, res) {
@@ -79,15 +123,11 @@ async function resetPassword(req, res) {
 
     if (!user) return res.status(400).json({ message: 'Invalid or expired token' });
 
-
     user.password = await bcrypt.hash(password, 10);
-
-
     user.resetPasswordToken = undefined;
     user.resetPasswordExpires = undefined;
 
     await user.save();
-
 
     res.json({ message: 'Password reset successful' });
   } catch (err) {
@@ -101,7 +141,8 @@ module.exports = {
   registerUser,
   loginUser,
   forgotPassword,
-  resetPassword
+  resetPassword,
+  refreshAccessToken
 };
 
 

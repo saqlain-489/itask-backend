@@ -12,6 +12,8 @@ const userSchema = new mongoose.Schema({
     view: { type: Boolean },
     isAdmin: { type: Boolean },
     profilePic: { type: String },
+    refreshToken: { type: String },
+
 }, { timestamps: true });
 
 module.exports = mongoose.model("users", userSchema);

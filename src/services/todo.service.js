@@ -59,11 +59,22 @@ async function patchtodo(id, updates) {
     const updatedTodo = await Todos.findByIdAndUpdate(id, updates, { new: true });
     return updatedTodo;
 }
+async function searchtodos(query,userId) {
+    if (!query) return res.json({ data: [] });
 
+   
+    const todos = await Todos.find({
+      userId,
+      Title: { $regex: query, $options: "i" },
+    }).sort({ createdAt: -1 })
+
+    return todos
+}
 module.exports = {
     gettodos,
     createtodo,
     deletetodo,
     patchtodo,
-    getAlltodos
+    getAlltodos,
+    searchtodos
 }

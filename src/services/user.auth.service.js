@@ -55,11 +55,11 @@ async function registerUser(data) {
 async function loginUser(data) {
   const { email, password } = data;
 
-  const user = await Users.findOne({ email });
+  const user = await Users.findOne({ email });  
   if (!user) {
     throw new Error("Invalid email or password");
   }
-
+  
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) {
     throw new Error("Invalid email or password");
@@ -81,10 +81,10 @@ async function loginUser(data) {
     secretKey,
     { expiresIn: "15d" }
   );
+  console.log(accesstoken,'dsa')
 
   user.refreshToken = refreshToken;
   await user.save();
-
 
   return { user, accesstoken, refreshToken };
 }

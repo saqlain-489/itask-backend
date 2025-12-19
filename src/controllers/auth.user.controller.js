@@ -12,10 +12,10 @@ const registerUser = async (req, res) => {
     console.log('Received request body:', req.body);
     const { name, email, password } = req.body;
 
-    const { newUser, accesstoken, refreshToken } = await authUserServices.registerUser(req.body);
+    const { user, accesstoken, refreshToken } = await authUserServices.registerUser(req.body);
     res.status(201).json({
       message: "User registered successfully",
-      newUser,
+      user,
       accesstoken,
       refreshToken
     });
@@ -31,10 +31,6 @@ const loginUser = async (req, res) => {
 
     const { user, accesstoken, refreshToken } = await authUserServices.loginUser(req.body);
 
-    if (user && refreshToken) {
-      await User.findByIdAndUpdate(user._id, { refreshToken: refreshToken }, { new: true, useFindAndModify: false });
-    }
-    console.log(user.refreshToken)
 
     res.status(200).json({
       message: "Login successful",
@@ -47,12 +43,12 @@ const loginUser = async (req, res) => {
         view: user.view,
         isAdmin: user.isAdmin,
         refreshToken: user.refreshToken,
-        // accesstoken:user.accesstoken
       },
       accesstoken,
       refreshToken,
     });
   } catch (err) {
+    console.error('Login error:', err);
     res.status(400).json({ message: err.message });
   }
 };

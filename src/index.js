@@ -34,7 +34,7 @@ if (!loaded) {
 
 const express = require('express');
 const app = express();
-const port = 4000;
+const port = 3000;
 const routes = require('./routes');
 const mongoose = require('mongoose');
 const cors = require('cors')
@@ -52,7 +52,7 @@ const mongooseOptions = {
   socketTimeoutMS: 45000,
 };
 
-mongoose.connect(MONGO_URI, mongooseOptions)
+mongoose.connect(process.env.MONGO_URI, mongooseOptions)
   .then(() => {
     console.log('MongoDB connected successfully');
 
